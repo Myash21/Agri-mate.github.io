@@ -1,5 +1,9 @@
 # local package
 -e .
+pandas
+numpy
+matplotlib
+seaborn
 
 # external requirements
 click
