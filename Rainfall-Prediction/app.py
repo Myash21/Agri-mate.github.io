@@ -6,7 +6,7 @@ from dateutil.relativedelta import relativedelta
 app = Flask(__name__)
 
 # Load the ARIMA model
-MODEL_PATH = "D:\\ASP\\ML\\PBL2\\model2.joblib"
+MODEL_PATH = "Rainfall-Prediction\\models\\model2.joblib"
 model = joblib.load(MODEL_PATH)
 
 @app.route('/')
