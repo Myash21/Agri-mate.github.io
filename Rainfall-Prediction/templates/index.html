@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainfall Prediction</title>
+    <link rel="stylesheet" href="static/indexstyle.css">
+    
+    <link rel="icon" type="image/png" href="static/images/cloud3.png">
+</head>
+<body>
+    <header>
+        <h1>Rainfall Prediction</h1>
+    </header>
+    <div class="container">
+        <form action="/predict" method="post"><label for="num_periods" style="font-size: 24px;">Number of months:</label>
+
+            <input type="number" id="num_periods" name="num_periods" required min="1" max="60">
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
