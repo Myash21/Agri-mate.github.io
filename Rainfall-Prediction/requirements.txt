@@ -8,6 +8,7 @@ plotly
 statsmodels
 pmdarima
 gunicorn
+flask
 
 # external requirements
 click
