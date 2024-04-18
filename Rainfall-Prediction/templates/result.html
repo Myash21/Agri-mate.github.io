@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rainfall Prediction</title>
-  <link rel="stylesheet" href="static/resultstyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Rainfall Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/result.css') }}">
     
-  <link rel="icon" type="image/png" href="static/images/cloud3.png">
-
 </head>
 <body>
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    
     <h1>Predicted Rainfall</h1>
-  <div class="container">
-    <table class="rainfall-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Rainfall (in mm)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for result in prediction_results %}
-          <tr>
-            <td>{{ result['Date'] }}</td>
-            <td>{{ result['Rainfall'] }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-
-  <script src="script.js"></script>  </body>
+    <div class="container">
+        <table class="rainfall-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Rainfall (in mm)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in prediction_results %}
+                <tr>
+                    <td>{{ result['Date'] }}</td>
+                    <td>{{ result['Rainfall'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <footer style="margin-bottom: -150px; background-color: black; color: white; width: 100%;  position: absolute; bottom: 0; font-family: 'Times New Roman', Times, serif; font-size: larger; text-align: center;">
+        <p>Meet the creators: - <a href="link_to_Yash_Mhaskar_portfolio" style="color: white; text-decoration: none;">Yash Mhaskar</a> & <a href="https://aaryanpalve5.github.io/PortfolioASP/index.html" target="_blank" style="color: white; text-decoration: none;">Aaryan Palve</a></p>
+    </footer>
+</body>
 </html>
