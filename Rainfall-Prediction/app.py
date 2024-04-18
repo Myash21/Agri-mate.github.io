@@ -26,7 +26,7 @@ def konkan():
 # Handle the form submission for Konkan region prediction
 @app.route('/konkan_prediction', methods=['POST'])
 def konkan_prediction():
-    model_path = "models/model1.pbz2"
+    model_path = "Rainfall-Prediction\models\model1.pbz2"
     with bz2.BZ2File(model_path, 'rb') as f:
         model = pickle.load(f)
     if request.method == 'POST':
@@ -48,7 +48,7 @@ def vidarbha():
 
 @app.route('/vidarbha_prediction', methods=['POST'])
 def vidarbha_prediction():
-    model_path = "models/model4.pbz2"
+    model_path = "Rainfall-Prediction\models\model4.pbz2"
     with bz2.BZ2File(model_path, 'rb') as f:
         model = pickle.load(f)
     if request.method == 'POST':
@@ -68,7 +68,7 @@ def marathwada():
 
 @app.route('/marathwada_prediction', methods=['POST'])
 def marathwada_prediction():
-    model_path = "models/model3.pbz2"
+    model_path = "Rainfall-Prediction\models\model3.pbz2"
     with bz2.BZ2File(model_path, 'rb') as f:
         model = pickle.load(f)
     if request.method == 'POST':
@@ -88,7 +88,7 @@ def madhya_maharashtra():
 
 @app.route('/madhya_maharashtra_prediction', methods=['POST'])
 def madhya_maharashtra_prediction():
-    model_path = "models/model2.pbz2"
+    model_path = "Rainfall-Prediction\models\model2.pbz2"
     with bz2.BZ2File(model_path, 'rb') as f:
         model = pickle.load(f)
     if request.method == 'POST':
