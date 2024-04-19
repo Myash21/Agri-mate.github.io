@@ -1,12 +1,65 @@
 import bz2
 import pickle
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session, url_for
+from flask_sqlalchemy import SQLAlchemy
+import bcrypt
 
 
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 app = Flask(__name__)
- 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+db = SQLAlchemy(app)
+app.secret_key = 'secret_key'
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(20), unique=True)
+    password = db.Column(db.String(60), nullable=False)
+
+    def __init__(self, email, password):
+        self.email = email
+        self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+    def check_password(self, password):
+        return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
+
+with app.app_context():
+    #db.drop_all()  # Drop existing tables (if any)
+    db.create_all()
+
+@app.route('/register', methods = ['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        new_user = User(email = email, password = password)
+        if User.query.filter_by(email=email).first():
+            return render_template('register.html', error='Email already registered')
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect('/login')
+    return render_template('register.html') 
+
+@app.route('/login', methods = ['GET', 'POST'])    
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email = email).first()
+        if user and user.check_password(password):
+            session['email'] = user.email
+            session['password'] = user.password
+            return redirect('/home')    
+        else:
+            return render_template('login.html', error = 'Invalid User')
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return redirect('/login')
 
 @app.route('/')
 def ground0():
