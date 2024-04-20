@@ -4,7 +4,99 @@
   <title>User Authentication</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <style>
+    body {
+        background-image: url("static/images/bg3.jpg");
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(100%);
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        
+    }
+
+    .form-wrapper {
+        background-color: rgba(255, 255, 255, 0.95); /* Adjusted opacity */
+        padding: 25px; /* Increased padding */
+        border-radius: 30px; /* Increased border radius */
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); /* Increased box shadow */
+        text-align: center;
+        max-width: 800px; /* Increased max-width for wider form */
+        width: 70%; /* Set width to 80% for responsiveness */
+        height: 60vh; /* Set shorter height */
+        padding-right: 80px;
+        padding-left: 80px;
+      }
+
+    .form-title {
+        color: #3498db;
+        font-size: 36px; /* Decreased font size */
+        margin-bottom: 20px; /* Increased margin bottom */
+    }
+
+    .form-group {
+        margin-bottom: 20px; /* Increased margin bottom */
+    }
+
+    label {
+        display: block;
+        margin-bottom: 20px; /* Increased margin bottom */
+        font-size: 20px; /* Decreased font size */
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        width: 80%;
+        height: 40px; /* Adjusted height */
+        padding: 10px; /* Decreased padding */
+        margin-bottom: 20px; /* Increased margin bottom */
+        border: 2px solid #ccc; /* Increased border width */
+        border-radius: 12px; /* Increased border radius */
+        box-sizing: border-box;
+        font-size: 16px; /* Decreased font size */
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 18px; /* Decreased padding */
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 12px; /* Increased border radius */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 20px; /* Decreased font size */
+    }
+
+    button[type="submit"]:hover {
+        background-color: #2980b9;
+    }
+
+   
+
+   
+
+    footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+           
+            position: fixed;
+            bottom: 0;
+            width: 100%;/* Adjusted margin-bottom */
+            z-index: 9999;
+        }
+  </style>
+
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -14,29 +106,35 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
-      <h2>Login</h2>
-
-      {% if error %}
-      <div class="alert alert-danger" role="alert">
-        {{ error }}
+      <div class="form-wrapper">
+        <form action="/login", method="POST">
+          <h1 class="form-title">Login</h1> <!-- Move "Login" inside the form --><hr><br>
+          {% if error %}
+          <div class="alert alert-danger" role="alert">
+            {{ error }}
+          </div>
+          {% endif %}
+          <div class="form-group">
+             <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+          </div>
+          <button type="submit" class="btn btn-dark">Submit</button>
+          <br><a href="/register" class="reg" style="margin: 3px; font-size: 25px; text-decoration-color: black;"><br>Go To Register</a>
+        </form>
       </div>
-      {% endif %}
-
-      <form action="/login", method="POST">
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-        </div>
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
-        </div>
-        <button type="submit" class="btn btn-dark">Submit</button>
-        <a href="/register" class="btn btn-primary">Go To Register</a>
-      </form>
     </div>
   </div>
 </div>
+
+
+<footer style="margin-bottom: 0px; background-color: black; color: white; width: 100%;  position: absolute; bottom: 0; font-family: 'Times New Roman', Times, serif; font-size: large; text-align: center;">
+  <p>Meet the creators: - <a href="https://myash21.github.io/portfolio.github.io/#project" style="color: white; text-decoration: none;">Yash Mhaskar</a> & <a href="https://aaryanpalve5.github.io/PortfolioASP/index.html" target="_blank" style="color: white; text-decoration: none;">Aaryan Palve</a></p>
+</footer>
+
 
 </body>
 </html>
