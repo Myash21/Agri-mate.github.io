@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Result</h1>
+        <p><strong>Predicted Crop:</strong> {{ crop }}</p>
+        <p><strong>N:</strong> {{ N }}</p>
+        <p><strong>P:</strong> {{ P }}</p>
+        <p><strong>K:</strong> {{ K }}</p>
+        <p><strong>Temperature:</strong> {{ temperature }}</p>
+        <p><strong>Humidity:</strong> {{ humidity }}</p>
+        <p><strong>pH:</strong> {{ ph }}</p>
+        <p><strong>Rainfall:</strong> {{ rainfall }}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Agriculture Parameters</h1>
+        <form action="{{ url_for('process_parameters') }}" method="POST">
+            <label for="N">N:</label>
+            <input type="text" id="N" name="N" required><br><br>
+            
+            <label for="P">P:</label>
+            <input type="text" id="P" name="P" required><br><br>
+            
+            <label for="K">K:</label>
+            <input type="text" id="K" name="K" required><br><br>
+            
+            <label for="temperature">Temperature:</label>
+            <input type="text" id="temperature" name="temperature" required><br><br>
+            
+            <label for="humidity">Humidity:</label>
+            <input type="text" id="humidity" name="humidity" required><br><br>
+            
+            <label for="ph">pH:</label>
+            <input type="text" id="ph" name="ph" required><br><br>
+            
+            <label for="rainfall">Rainfall:</label>
+            <input type="text" id="rainfall" name="rainfall" required><br><br>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

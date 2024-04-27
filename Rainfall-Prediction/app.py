@@ -3,6 +3,8 @@ import pickle
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd
 
 
 from datetime import datetime, timedelta
@@ -27,6 +29,11 @@ class User(db.Model):
 with app.app_context():
     #db.drop_all()  # Drop existing tables (if any)
     db.create_all()
+
+
+@app.route('/')
+def newhome():
+    return render_template('newhome.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
@@ -61,7 +68,7 @@ def logout():
     session.pop('email', None)
     return redirect('/login')
 
-@app.route('/')
+@app.route('/rain_home')
 def ground0():
     return render_template('ground0.html')
 
@@ -155,6 +162,49 @@ def madhya_maharashtra_prediction():
         return 'Invalid request'
 
 
+# Load the model
+def decompress_pickle(file):
+    data = bz2.BZ2File(file, 'rb')
+    data = pickle.load(data)
+    return data
+
+model = decompress_pickle('Rainfall-Prediction\models\XB.pbz2')
+
+# Load the label encoder
+label_encoder = LabelEncoder()
+
+# Load the original dataset
+df = pd.read_csv("Rainfall-Prediction\Dataset\Crop_recommendation.csv")  # Update the file path accordingly
+
+# Fit label encoder
+label_encoder.fit(df['label'])
+
+@app.route('/crop')
+def index():
+    return render_template('crop_index.html')
+
+@app.route('/process_parameters', methods=['POST'])
+def process_parameters():
+    if request.method == 'POST':
+        # Retrieve the form data
+        N = float(request.form['N'])
+        P = float(request.form['P'])
+        K = float(request.form['K'])
+        temperature = float(request.form['temperature'])
+        humidity = float(request.form['humidity'])
+        ph = float(request.form['ph'])
+        rainfall = float(request.form['rainfall'])
+
+        # Perform prediction using the model
+        predicted_crop = model.predict([[N, P, K, temperature, humidity, ph, rainfall]])
+
+        # Convert the predicted label to human-readable format
+        decoded_labels = label_encoder.inverse_transform(predicted_crop)
+
+        # Render the result template with the predicted crop
+        return render_template('crop_result.html', N=N, P=P, K=K, temperature=temperature, humidity=humidity, ph=ph, rainfall=rainfall, crop=decoded_labels[0])
+    else:
+        return 'Method not allowed'
 
 if __name__ == '__main__':
     app.run(debug=True)
