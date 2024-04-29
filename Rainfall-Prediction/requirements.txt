@@ -10,6 +10,7 @@ pmdarima
 gunicorn
 flask
 xgboost
+Flask-SQLAlchemy
 
 # external requirements
 click
