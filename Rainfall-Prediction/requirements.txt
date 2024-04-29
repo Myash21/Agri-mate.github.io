@@ -9,6 +9,7 @@ statsmodels
 pmdarima
 gunicorn
 flask
+xgboost
 
 # external requirements
 click
