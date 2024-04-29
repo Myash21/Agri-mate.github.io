@@ -1,29 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+/* newhomestyle.css */
 
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-<style>
-    /* newhomestyle.css */
-
-    body {
-    background-image: url("static/style/images/bg2.jpg");
-    background-size: cover;
+body {
+    background-image: url('D:\ASP\ML\Rainfall-Prediction\Rainfall-Prediction\static\images\bg2.jpg');
+   
+    background-size:cover;
     font-family: "Bebas Neue";
+    
 }
-
 
 .Agrimate h1{
     margin-top: 100px;
@@ -87,9 +70,6 @@
   
   .navbar li {
     font-size:2px;
-    margin-left: auto;
-    margin-right: auto;
-    flex: 1;
     /* Each navbar item takes equal space */
   }
   
@@ -152,27 +132,3 @@
       
   
     }
-</style>
-
-</head>
-<body >
-
-    <div class="navbar" style="padding: 0px;">
-        <ul >
-            <li><a>Home</a></li>
-            <li ><a href="{{ url_for('ground0') }}">Rainfall Prediction</a></li>
-            <li ><a href="{{ url_for('index') }}" >Crop Recommendation</a></li>
-           
-        </ul>
-        <hr>
-    </div>
-    <br><br><br>
-    <div class="Agrimate">
-        <h1>Agrimate
-        <p>Your A.I. assistant for agriculture</p></h1>
-    </div>
-
-
-        
-</body>
-</html>
