@@ -107,7 +107,7 @@
   <div class="row justify-content-center">
     <div class="col-sm-8">
       <div class="form-wrapper">
-        <form action="/login", method="POST">
+        <form action="{% if login_type == 'rain' %}/login_rain{% else %}/login_crop{% endif %}" method="POST">
           <h1 class="form-title">Login</h1> <!-- Move "Login" inside the form --><hr><br>
           {% if error %}
           <div class="alert alert-danger" role="alert">
@@ -123,7 +123,7 @@
             <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
           </div>
           <button type="submit" class="btn btn-dark">Submit</button>
-          <br><a href="/register" class="reg" style="margin: 3px; font-size: 25px; text-decoration-color: black;"><br>Go To Register</a>
+          <br><a href="{% if login_type == 'rain' %}/register_rain{% else %}/register_crop{% endif %}" class="reg" style="margin: 3px; font-size: 25px; text-decoration-color: black;"><br>Go To Register</a>
         </form>
       </div>
     </div>

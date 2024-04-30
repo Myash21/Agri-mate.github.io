@@ -35,33 +35,65 @@ with app.app_context():
 def newhome():
     return render_template('newhome.html')
 
-@app.route('/register', methods = ['GET', 'POST'])
-def register():
+from flask import url_for
+
+@app.route('/register_rain', methods=['GET', 'POST'])
+def register_rain():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
 
-        new_user = User(email = email, password = password)
+        new_user = User(email=email, password=password)
         if User.query.filter_by(email=email).first():
-            return render_template('register.html', error='Email already registered')
+            return render_template('register.html', register_type='rain', error='Email already registered')
         db.session.add(new_user)
         db.session.commit()
-        return redirect('/login')
-    return render_template('register.html') 
+        return redirect(url_for('login_rain'))  # Redirect to the login_rain route
+    return render_template('register.html', register_type='rain')
 
-@app.route('/login', methods = ['GET', 'POST'])    
-def login():
+@app.route('/register_crop', methods=['GET', 'POST'])
+def register_crop():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        user = User.query.filter_by(email = email).first()
+
+        new_user = User(email=email, password=password)
+        if User.query.filter_by(email=email).first():
+            return render_template('register.html', register_type='crop', error='Email already registered')
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('login_crop'))  # Redirect to the login_crop route
+    return render_template('register.html', register_type='crop')
+ 
+
+@app.route('/login_rain', methods=['GET', 'POST'])    
+def login_rain():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
         if user and user.check_password(password):
             session['email'] = user.email
             session['password'] = user.password
             return redirect('/home')    
         else:
-            return render_template('login.html', error = 'Invalid User')
-    return render_template('login.html')
+            return render_template('login.html', login_type='rain', error='Invalid User')
+    return render_template('login.html', login_type='rain')
+
+@app.route('/login_crop', methods=['GET', 'POST'])    
+def login_crop():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+        if user and user.check_password(password):
+            session['email'] = user.email
+            session['password'] = user.password
+            return redirect('/crop_index')    
+        else:
+            return render_template('login.html', login_type = 'crop', error='Invalid User')
+    return render_template('login.html', login_type = 'crop')
+
 
 @app.route('/logout')
 def logout():
