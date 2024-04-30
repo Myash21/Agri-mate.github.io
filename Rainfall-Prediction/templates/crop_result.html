@@ -6,44 +6,65 @@
     <title>Result</title>
     <style>
         body {
+            text-align: center;
             background-image: url("static/style/images/cropbg.jpg");
             background-size: cover;
-            filter: grayscale(100%);
             margin: 0;
             padding: 0;
             overflow: hidden;
-            font-family: Arial, sans-serif;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
         .container {
-            width: 50%;
+            width: 60%;
             margin: 100px auto;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.5); /* Added translucency */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Enhanced box shadow */
+            backdrop-filter: blur(10px); /* Added backdrop filter for a frosted glass effect */
         }
 
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            color: #333; /* Darkened heading color */
         }
 
         p {
             margin-bottom: 10px;
+            color: #444; /* Darkened text color */
         }
 
         strong {
             font-weight: bold;
         }
-    </style>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        .submit-button {
+            font-size: 22px;
+            width: 30%;
+            padding: 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #1E8449; /* Darkened hover color */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Result</h1>
+        <hr>
         <p><strong>Predicted Crop:</strong> {{ crop }}</p>
-           </div>
+        <a href="/"><button type="submit" class="submit-button">
+            Go to Home page
+        </button></a>
+    </div>
 </body>
 </html>
