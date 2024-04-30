@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-        background-image: url("static/images/bg3.jpg");
+        background-image: url("static/style/images/bg2.jpg");
         background-size: cover;
         background-position: center;
         filter: grayscale(100%);
@@ -25,7 +25,7 @@
     }
 
     .form-wrapper {
-        background-color: rgba(255, 255, 255, 0.95); /* Adjusted opacity */
+        background-color: rgba(255, 255, 255, 0.718); /* Adjusted opacity */
         padding: 25px; /* Increased padding */
         border-radius: 30px; /* Increased border radius */
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); /* Increased box shadow */
@@ -39,6 +39,7 @@
 
     .form-title {
         color: #3498db;
+        font-weight: bolder;
         font-size: 36px; /* Decreased font size */
         margin-bottom: 20px; /* Increased margin bottom */
     }
@@ -123,7 +124,7 @@
             <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
           </div>
           <button type="submit" class="btn btn-dark">Submit</button>
-          <br><a href="{% if login_type == 'rain' %}/register_rain{% else %}/register_crop{% endif %}" class="reg" style="margin: 3px; font-size: 25px; text-decoration-color: black;"><br>Go To Register</a>
+          <br><a href="{% if login_type == 'rain' %}/register_rain{% else %}/register_crop{% endif %}" class="reg" style="margin: 3px; font-size: 20px; text-decoration-color: black;"><br>Go To Register</a>
         </form>
       </div>
     </div>
