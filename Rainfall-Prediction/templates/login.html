@@ -31,7 +31,7 @@
         text-align: center;
         max-width: 800px; /* Increased max-width for wider form */
         width: 70%; /* Set width to 80% for responsiveness */
-        height: 60vh; /* Set shorter height */
+        height: 70vh; /* Set shorter height */
         padding-right: 80px;
         padding-left: 80px;
       }
@@ -109,11 +109,7 @@
       <div class="form-wrapper">
         <form action="{% if login_type == 'rain' %}/login_rain{% else %}/login_crop{% endif %}" method="POST">
           <h1 class="form-title">Login</h1> <!-- Move "Login" inside the form --><hr><br>
-          {% if error %}
-          <div class="alert alert-danger" role="alert">
-            {{ error }}
-          </div>
-          {% endif %}
+         
           <div class="form-group">
              <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
@@ -124,7 +120,14 @@
           </div>
           <button type="submit" class="btn btn-dark">Submit</button>
           <br><a href="{% if login_type == 'rain' %}/register_rain{% else %}/register_crop{% endif %}" class="reg" style="margin: 3px; font-size: 20px; text-decoration-color: black;"><br>Go To Register</a>
-        </form>
+         <br>
+         {% if error %}<br><hr>
+        <div class="alert alert-danger" role="alert"  style="font-size: 30px;">
+          {{ error }}
+        </div>
+        {% endif %}
+
+        <br></form>
       </div>
     </div>
   </div>
