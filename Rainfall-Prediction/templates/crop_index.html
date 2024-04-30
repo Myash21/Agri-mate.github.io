@@ -3,33 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask App</title>
+    <title>Agrimate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("static/style/images/cropbg.jpg");
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.441); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 72px); /* Adjusted width */
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #040202;
+            background: transparent;
+        }
+
+        input[type="submit"] {
+            width: 50%;
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Enter the following details </h1>
+        <h1>Enter the following details</h1>
         <form action="{{ url_for('process_parameters') }}" method="POST">
             <label for="N">N:</label>
-            <input type="text" id="N" name="N" required><br><br>
+            <input type="text" id="N" name="N" required>
             
             <label for="P">P:</label>
-            <input type="text" id="P" name="P" required><br><br>
+            <input type="text" id="P" name="P" required>
             
             <label for="K">K:</label>
-            <input type="text" id="K" name="K" required><br><br>
+            <input type="text" id="K" name="K" required>
             
             <label for="temperature">Temperature:</label>
-            <input type="text" id="temperature" name="temperature" required><br><br>
+            <input type="text" id="temperature" name="temperature" required>
             
             <label for="humidity">Humidity:</label>
-            <input type="text" id="humidity" name="humidity" required><br><br>
+            <input type="text" id="humidity" name="humidity" required>
             
             <label for="ph">pH:</label>
-            <input type="text" id="ph" name="ph" required><br><br>
+            <input type="text" id="ph" name="ph" required>
             
             <label for="rainfall">Rainfall:</label>
-            <input type="text" id="rainfall" name="rainfall" required><br><br>
+            <input type="text" id="rainfall" name="rainfall" required>
             
             <input type="submit" value="Submit">
         </form>

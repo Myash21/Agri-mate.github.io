@@ -179,8 +179,12 @@ df = pd.read_csv("Rainfall-Prediction\Dataset\Crop_recommendation.csv")  # Updat
 # Fit label encoder
 label_encoder.fit(df['label'])
 
-@app.route('/crop')
-def index():
+@app.route('/crop_home')
+def crop_home():
+    return render_template('crop_home.html')
+
+@app.route('/crop_index')
+def crop_index():
     return render_template('crop_index.html')
 
 @app.route('/process_parameters', methods=['POST'])

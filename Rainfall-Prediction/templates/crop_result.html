@@ -4,19 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
+    <style>
+        body {
+            background-image: url("static/style/images/cropbg.jpg");
+            background-size: cover;
+            filter: grayscale(100%);
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+    </style>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Result</h1>
         <p><strong>Predicted Crop:</strong> {{ crop }}</p>
-        <p><strong>N:</strong> {{ N }}</p>
-        <p><strong>P:</strong> {{ P }}</p>
-        <p><strong>K:</strong> {{ K }}</p>
-        <p><strong>Temperature:</strong> {{ temperature }}</p>
-        <p><strong>Humidity:</strong> {{ humidity }}</p>
-        <p><strong>pH:</strong> {{ ph }}</p>
-        <p><strong>Rainfall:</strong> {{ rainfall }}</p>
-    </div>
+           </div>
 </body>
 </html>
