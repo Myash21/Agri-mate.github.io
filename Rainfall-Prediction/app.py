@@ -35,7 +35,7 @@ with app.app_context():
 def newhome():
     return render_template('newhome.html')
 
-from flask import url_for
+
 
 @app.route('/register_rain', methods=['GET', 'POST'])
 def register_rain():
