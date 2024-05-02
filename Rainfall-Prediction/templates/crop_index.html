@@ -65,6 +65,27 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        /* Added styles for the logout button */
+        .logout-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .logout-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #f44336; /* Red color for logout button */
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #d32f2f; /* Darker red color on hover */
+        }
     </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -95,6 +116,13 @@
             
             <input type="submit" value="Submit">
         </form>
+
+        <!-- Logout button -->
+        <div class="logout-form">
+            <form action="{{ url_for('logout_crop') }}" method="POST">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

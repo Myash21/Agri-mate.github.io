@@ -95,10 +95,33 @@ def login_crop():
     return render_template('login.html', login_type = 'crop')
 
 
-@app.route('/logout')
-def logout():
+@app.route('/logout_rain')
+def logout_rain():
     session.pop('email', None)
-    return redirect('/login')
+    return redirect(url_for('login_rain'))
+
+@app.route('/logout_crop', methods=['POST'])
+def logout_crop():
+    session.pop('email', None)
+    return redirect(url_for('login_crop'))
+
+
+@app.before_request
+def require_login():
+    # Skip checking for session if it's a request for a static file
+    if request.endpoint == 'static':
+        return
+
+    allowed_routes = ['login_rain', 'login_crop', 'register_rain', 'register_crop', 'newhome', 'ground0', 'crop_home']  # Routes where login is not required
+    login_route = 'login_rain'  # Default login route
+
+    # Check if the request endpoint starts with 'login_crop'
+    if request.endpoint and (request.endpoint.startswith('login_crop') or request.endpoint.startswith('crop_parameters')):
+        login_route = 'login_crop'
+
+    if request.endpoint not in allowed_routes and 'email' not in session:
+        return redirect(url_for(login_route))  # Redirect to the appropriate login route if not logged in
+
 
 @app.route('/rain_home')
 def ground0():
@@ -219,7 +242,7 @@ def crop_home():
 def crop_index():
     return render_template('crop_index.html')
 
-@app.route('/process_parameters', methods=['POST'])
+@app.route('/crop_parameters', methods=['POST'])
 def process_parameters():
     if request.method == 'POST':
         # Retrieve the form data
