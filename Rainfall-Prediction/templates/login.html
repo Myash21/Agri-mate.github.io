@@ -95,6 +95,11 @@
             width: 100%;/* Adjusted margin-bottom */
             z-index: 9999;
         }
+      @media screen and (max-width: 768px) {
+        .form-wrapper {
+          margin-left: -15px;
+        }
+    }
   </style>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -119,7 +124,8 @@
             <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
           </div>
           <button type="submit" class="btn btn-dark">Submit</button>
-          <br><a href="{% if login_type == 'rain' %}/register_rain{% else %}/register_crop{% endif %}" class="reg" style="margin: 3px; font-size: 20px; text-decoration-color: black;"><br>Go To Register</a>
+          
+          <br><br><hr><a href="{% if login_type == 'rain' %}/register_rain{% else %}/register_crop{% endif %}" class="reg" style="margin: 3px; font-size: 20px; text-decoration-color: black;"><br>Go To Register</a>
          <br>
          {% if error %}<br><hr>
         <div class="alert alert-danger" role="alert"  style="font-size: 30px;">
@@ -141,3 +147,4 @@
 
 </body>
 </html>
+

@@ -78,3 +78,16 @@ footer {
     letter-spacing: 2px;
     z-index: 9999;
 }
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 44px; /* Decreased font size for smaller screens */
+    }
+    .footer{
+        font-size: 14px;
+        padding-right: 5px; 
+        text-align: justify;
+        margin-right: 5px;
+        width: 100%;
+    }
+}

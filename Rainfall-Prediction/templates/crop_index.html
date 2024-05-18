@@ -87,6 +87,23 @@
         .logout-button:hover {
             background-color: #d32f2f; /* Darker red color on hover */
         }
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 80%; /* Adjust container width for smaller screens */
+            }
+            h1 {
+                font-size: 24px; /* Decrease font size for smaller screens */
+            }
+            label {
+                font-size: 16px; /* Decrease font size for smaller screens */
+            }
+            input[type="text"], input[type="submit"] {
+                width: 100%; /* Make inputs full width for smaller screens */
+            }
+            .logout-button {
+                width: 100%; /* Make logout button full width for smaller screens */
+            }
+        }
     </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
@@ -121,7 +138,7 @@
         <!-- Logout button -->
         <div class="logout-form">
             <form action="{{ url_for('logout_crop') }}" method="POST">
-                <button type="submit" class="logout-button">Logout</button>
+                <button type="submit" class="logout-button">Logout  </button>
             </form>
         </div>
     </div>

@@ -6,6 +6,17 @@
     <title>Konkan Region</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style/region.css') }}">
     <style>
+    @media screen and (max-width: 768px) {
+        h1 {
+            font-size: 44px; /* Decreased font size for smaller screens */
+        }
+        .footer{
+            font-size: 14px;
+            padding-right: 5px; 
+            margin-right: 5px;
+            width: 100%;
+        }
+    }
         /* Loading screen styles */
         #loading-overlay {
             position: fixed;
@@ -106,7 +117,7 @@
             background-color: black;
             color: white;
             text-align: center;
-            
+            text-align: justify;
             position: fixed;
             bottom: 0;
             width: 100%;

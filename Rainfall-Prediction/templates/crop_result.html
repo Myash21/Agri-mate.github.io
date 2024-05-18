@@ -28,11 +28,11 @@
         .container {
             width: 60%;
             margin: 100px auto;
-            background-color: rgba(255, 255, 255, 0.118); /* Added translucency */
+            background-color: rgba(255, 255, 255, 0.005); /* Added translucency */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Enhanced box shadow */
-            backdrop-filter: blur(10px); /* Added backdrop filter for a frosted glass effect */
+            backdrop-filter: blur(4px); /* Added backdrop filter for a frosted glass effect */
         }
 
         h1 {
@@ -59,6 +59,19 @@
 
         .submit-button:hover {
             background-color: #1E8449; /* Darkened hover color */
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 70%; /* Adjusted width for smaller screens */
+            }
+
+            h1 {
+                font-size: 36px; /* Decreased font size for smaller screens */
+            }
+
+            .submit-button {
+                width: 70%; /* Adjusted width for smaller screens */
+            }
         }
     </style>
 </head>
