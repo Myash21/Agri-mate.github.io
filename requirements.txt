@@ -11,6 +11,7 @@ gunicorn
 flask
 xgboost
 Flask-SQLAlchemy
+bcrypt
 
 # external requirements
 click
